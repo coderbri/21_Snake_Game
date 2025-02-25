@@ -46,6 +46,11 @@ The **Classic Snake Game** is a Python-based recreation of the timeless arcade g
     - Requires Python 3.x (no additional libraries needed since turtle is included in the standard library).
 3. Run the game.
 
+<div align="center">
+<img src="./imgs/Snake_Game-Demo.gif"
+    alt="Snake Game - Demo"
+    width="450px" height="auto">
+</div>
 
 ## License
 
