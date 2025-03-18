@@ -16,12 +16,12 @@ food = Food()
 
 scoreboard = Scoreboard()
 
-# 3. Control the Snake
+# 3. Control the Snake (UPDATED using W-A-S-D instead of arrow keys)
 screen.listen()
-screen.onkey(snake.move_up, "Up")
-screen.onkey(snake.move_down,"Down")
-screen.onkey(snake.move_left, "Left")
-screen.onkey(snake.move_right, "Right")
+screen.onkeypress(snake.move_up, "w")
+screen.onkeypress(snake.move_down,"s")
+screen.onkeypress(snake.move_left, "a")
+screen.onkeypress(snake.move_right, "d")
 
 game_is_on = True
 while game_is_on:
@@ -42,12 +42,12 @@ while game_is_on:
             or snake.head.ycor() > 280
             or snake.head.ycor() < -280
     ):
-        game_is_on = False
-        scoreboard.game_over()
+        scoreboard.reset()  # ? Retains high score and resets current score
+        snake.reset()       # ? Restart with a new snake
 
-    for segment in snake.segments[1:]:
+    for segment in snake.segments[1:]:          # ? Skips the head
         if snake.head.distance(segment) < 10:
-            game_is_on = False
-            scoreboard.game_over()
+            scoreboard.reset()                  # ? Keep highest score, reset base score
+            snake.reset()                       # ? Restart with new snake
 
 screen.exitonclick()

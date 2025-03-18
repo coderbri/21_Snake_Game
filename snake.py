@@ -37,6 +37,14 @@ class Snake:
         new_segment.goto(position)
         self.segments.append(new_segment)
 
+    def reset(self):
+        """Resets the snake by clearing all segments and recreating it from the start."""
+        for seg in self.segments:
+            seg.goto(1000, 1000)        # ? Move old segments off-screen
+        self.segments.clear()           # ? Remove all segments from the list
+        self.create_snake()             # ? Recreate the initial snake
+        self.head = self.segments[0]    # ? Reset the head reference
+
     def extend(self):
         """Adds a new segment to the snake's tail when food is eaten."""
         self.add_segment(self.segments[-1].position())
@@ -53,17 +61,21 @@ class Snake:
     Each method changes the snake's direction unless it's currently moving in the opposite direction.
     """
     def move_up(self):
+        """Changes direction to up unless moving down."""
         if self.head.heading() != DOWN:
             self.segments[0].setheading(UP)
 
     def move_down(self):
+        """Changes direction to down unless moving up."""
         if self.head.heading() != UP:
             self.segments[0].setheading(DOWN)
 
     def move_left(self):
+        """Changes direction to left unless moving right."""
         if self.head.heading() != RIGHT:
             self.segments[0].setheading(LEFT)
 
     def move_right(self):
+        """Changes direction to right unless moving left."""
         if self.head.heading() != LEFT:
             self.segments[0].setheading(RIGHT)
