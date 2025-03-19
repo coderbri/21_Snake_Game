@@ -13,7 +13,6 @@ screen.tracer(0)        # ? Stops constant refresh for smoother animations
 
 snake = Snake()
 food = Food()
-
 scoreboard = Scoreboard()
 
 # 3. Control the Snake (UPDATED using W-A-S-D instead of arrow keys)
@@ -47,7 +46,7 @@ while game_is_on:
 
     for segment in snake.segments[1:]:          # ? Skips the head
         if snake.head.distance(segment) < 10:
-            scoreboard.reset()                  # ? Keep highest score, reset base score
+            scoreboard.reset()                  # ? Keep the highest score, reset base score
             snake.reset()                       # ? Restart with new snake
 
 screen.exitonclick()
